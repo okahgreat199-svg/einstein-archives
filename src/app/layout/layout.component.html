@@ -1,3 +1,6 @@
+<!-- this is the base layout structure, when you visit a page it routes to this component and the dynamic
+content will load in the router outlet, while the header, footer and sidebar are static -->
+
 <app-sidebar [class.hidden]="!sidebarService.isOpen()"></app-sidebar>
 
 <div class="backdrop" [class.show]="sidebarService.isOpen()" (click)="sidebarService.close()"></div>
