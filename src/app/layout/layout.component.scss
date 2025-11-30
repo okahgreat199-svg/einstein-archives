@@ -1,0 +1,85 @@
+.main-content {
+  margin-left: 350px;
+  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-body {
+  flex: 1 1 auto;
+}
+
+app-sidebar {
+  position: fixed;
+  width: 350px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out, opacity 0.25s ease-in-out;
+  will-change: transform, opacity;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+app-sidebar.hidden {
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+app-sidebar.hidden + .main-content {
+  margin-left: 0;
+}
+app-footer {
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  margin-top: auto;
+}
+
+@media (max-width: 767px) {
+  .main-content {
+    margin-left: 0; 
+  }
+
+  app-sidebar {
+    width: 280px;
+     max-width: 85vw;
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  app-sidebar.hidden {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  app-sidebar:not(.hidden) {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease-in-out;
+    z-index: 900;
+  }
+
+  .backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  app-sidebar {
+    z-index: 1000;
+  }
+
+}
